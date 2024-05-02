@@ -1,0 +1,27 @@
+﻿@*
+    L
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using System.Configuration
+@using System.Web
+@using MvcReportViewer;
+
+@{
+    ViewBag.Title = "Invoice";
+    Layout = null;
+}
+
+@{
+    //    var parameters = new List<KeyValuePair<string, object>>
+    //{
+
+    //new KeyValuePair<string, object>("billno",ViewBag.BillNo),
+    //};
+
+    var ReportPathPrefix = ConfigurationManager.AppSettings["ReportPathPrefix"].ToString();
+
+}
+<div id="divPrint">
+    @Html.MvcReportViewer("/HeaderReport", new { Height = 600, Width = "100%", style = "border: none" })
+    <div class="span3"></div>
+</div>

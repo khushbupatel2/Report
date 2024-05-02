@@ -1,0 +1,28 @@
+﻿@using System.Configuration
+@using System.Web
+@using MvcReportViewer;
+
+@{
+    ViewBag.Title = "Mechanic Report";
+    Layout = null;
+
+}
+
+@{
+    var parameters = new List<KeyValuePair<string, object>>
+    {
+    new KeyValuePair<string, object>("fromDate",ViewBag.FromDate),
+    new KeyValuePair<string, object>("toDate",ViewBag.ToDate),
+    new KeyValuePair<string, object>("mechanicid",ViewBag.mechanicid)
+
+    };
+    var settings = new ControlSettings { ShowToolBar = false };
+}
+<div id="divPrint">
+
+    @Html.MvcReportViewer("/MechanicReport", parameters, new { Height = 800, Width = "100%", style = "border: none" }).ControlSettings(new ControlSettings { ShowParameterPrompts = false })
+    <div class="span3"></div>
+</div>
+
+
+

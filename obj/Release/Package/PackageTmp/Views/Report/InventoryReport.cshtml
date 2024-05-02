@@ -1,0 +1,28 @@
+﻿@using System.Configuration
+@using System.Web
+@using MvcReportViewer;
+
+@{
+    ViewBag.Title = "Inventory Report";
+    Layout = null;
+
+}
+
+@{
+        var parameters = new List<KeyValuePair<string, object>>
+    {
+    new KeyValuePair<string, object>("SearchDate",ViewBag.searchDate),
+    new KeyValuePair<string, object>("ItemCode",ViewBag.searchCriteria),
+    new KeyValuePair<string, object>("warehouseId",ViewBag.warehouseId),
+
+    };
+    var settings = new ControlSettings { ShowToolBar = false };
+}
+<div id="divPrint">
+
+    @Html.MvcReportViewer("/RMReports/InventoryReport", parameters, new { Height = 1000, Width = "100%", style = "border: none" }).ControlSettings(new ControlSettings { ShowParameterPrompts = false })
+    <div class="span3"></div>
+</div>
+
+
+

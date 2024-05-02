@@ -1,0 +1,29 @@
+﻿@using System.Configuration
+@using System.Web
+@using MvcReportViewer;
+
+@{
+    ViewBag.Title = "OilChangedReport";
+    Layout = null;
+
+}
+
+@{
+    var parameters = new List<KeyValuePair<string, object>>
+{
+    new KeyValuePair<string, object>("unitId",ViewBag.unitId),
+      new KeyValuePair<string, object>("fromDate",ViewBag.fromDate),
+        new KeyValuePair<string, object>("toDate",ViewBag.toDate)
+
+    };
+    var settings = new ControlSettings { ShowToolBar = false };
+}
+<div id="divPrint">
+
+    @Html.MvcReportViewer("/RMReports/OilChangedReport", parameters, new { Height = 1000, Width = "100%", style = "border: none" }).ControlSettings(new ControlSettings { ShowParameterPrompts = true })
+    <div class="span3"></div>
+
+</div>
+
+
+
